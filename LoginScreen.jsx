@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
-import { Mail, GraduationCap } from 'lucide-react';
+import React, { useState } from "react";
+import { Mail, GraduationCap } from "lucide-react";
 
 const LoginScreen = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
-  const [schoolName, setSchoolName] = useState('');
+  const [email, setEmail] = useState("");
+  const [schoolName, setSchoolName] = useState("");
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     const newErrors = {};
-    
     if (!email.trim()) {
-      newErrors.email = 'E-posta adresi gereklidir';
+      newErrors.email = "E-posta adresi gereklidir";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = 'Geçerli bir e-posta adresi giriniz';
+      newErrors.email = "Geçerli bir e-posta adresi giriniz";
     }
-    
     if (!schoolName.trim()) {
-      newErrors.schoolName = 'Okul adı gereklidir';
+      newErrors.schoolName = "Okul adı gereklidir";
     }
-    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -46,6 +43,7 @@ const LoginScreen = ({ onLogin }) => {
         </div>
 
         <div className="space-y-6">
+          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               E-posta Adresi
@@ -57,7 +55,7 @@ const LoginScreen = ({ onLogin }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
+                  errors.email ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="ornek@email.com"
               />
@@ -67,6 +65,7 @@ const LoginScreen = ({ onLogin }) => {
             )}
           </div>
 
+          {/* School Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Okul Adı
@@ -78,7 +77,7 @@ const LoginScreen = ({ onLogin }) => {
                 value={schoolName}
                 onChange={(e) => setSchoolName(e.target.value)}
                 className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${
-                  errors.schoolName ? 'border-red-500' : 'border-gray-300'
+                  errors.schoolName ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Üniversite/Okul adınızı giriniz"
               />
